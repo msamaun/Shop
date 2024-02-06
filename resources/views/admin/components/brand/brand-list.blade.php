@@ -45,6 +45,8 @@
         tableData.DataTable().destroy();
         tableList.empty();
 
+        console.log(res);
+
         res.data['data'].forEach(function (item, index) {
             let row = `<tr>
                             <td>${index + 1}</td>
