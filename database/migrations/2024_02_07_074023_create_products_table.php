@@ -13,6 +13,23 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
+            $table->string('description', 500);
+            $table->string('price', 255);
+            $table->string('discount', 255);
+            $table->string('discount_price', 255);
+            $table->string('image');
+            $table->boolean('stock');
+            $table->float('star');
+            $table->enum('remark', ['popular', 'new', 'top', 'special','trending','regular']);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('category_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('brand_id')->references('id')->on('brands')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnUpdate()->restrictOnDelete();
+
             $table->timestamps();
         });
     }
