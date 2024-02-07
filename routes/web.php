@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,17 @@ Route::post('/verify',[UserController::class,'verify'])->name('verify');
 //Auth Routes
 Route::view('/login','auth.pages.login-page')->name('login');
 Route::view('/verify','auth.pages.verify-page')->name('verify');
-Route::view('/dashboard','admin.pages.dashboard')->name('register');
+Route::view('/dashboard','admin.pages.dashboard')->name('dashboard');
 Route::view('/brand','admin.pages.brand-page')->name('brand');
 Route::view('/category','admin.pages.category-page')->name('category');
 Route::view('/product','admin.pages.product-page')->name('product');
+
+
+//Customer Views Routes
+Route::view('/user-profile','auth.pages.profile-page')->name('user-profile');
+
+//Customer Routes
+ Route::post('/user-profile',[CustomerProfileController::class,'userProfile'])->middleware('auth:sanctum');
 
 //Route Group for Admin
 

@@ -21,25 +21,28 @@
 </div>
 
 <script>
-    async function verify(){
+    async function verify() {
         let code = document.getElementById('code').value;
         let email = sessionStorage.getItem('email');
-        if(code.length ===0){
+        if (code.length === 0) {
             alert("Please Enter Code");
-        }
-        else{
+        } else {
             $(".preloader").delay(90).fadeIn(100).removeClass('loaded');
-            let res = await axios.post('/verify', {otp: code, email: email});
-            console.log(res);
-            if(res.status===200){
-                setToken(res.data['token'])
-                window.location.href="/dashboard";
-            }
-            else{
+            let res = await axios.post('/verify', { otp: code, email: email });
+            console.log(res.data);
+            if (res.status === 200) {
+                setToken(res.data['token']);
+
+                if (res.data['user'] && res.data['user']['role'] === 'admin') {
+                    window.location.href = '/dashboard';
+                } else {
+                    window.location.href = '/';
+                }
+            } else {
                 $(".preloader").delay(90).fadeOut(100).addClass('loaded');
-                alert("Request Fail")
+                alert("Request Fail");
             }
         }
-
     }
+
 </script>

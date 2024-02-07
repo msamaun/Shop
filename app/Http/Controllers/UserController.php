@@ -39,6 +39,6 @@ class UserController extends Controller
         }
         User::where('email', $email)->update(['otp' => 0]);
         $token = $user->createToken('authToken')->plainTextToken;
-        return response()->json(['message' => 'OTP verified successfully', 'token' => $token], 200);
+        return response()->json(['message' => 'OTP verified successfully', 'token' => $token, 'user' => $user], 200);
     }
 }
