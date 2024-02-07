@@ -101,4 +101,12 @@ class BrandController extends Controller
         $brand = Brand::where('id',$brand_id)->where('user_id',$user_id)->first();
         return ResponseHelper::Out('Brand Details', $brand, 200);
     }
+
+
+
+    public function productByBrand()
+    {
+        $data = Brand::all();
+        return ResponseHelper::Out('Brand List', $data, 200);
+    }
 }

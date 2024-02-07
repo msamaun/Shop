@@ -93,9 +93,9 @@
         <span class="side-bar-item-caption">Product</span>
     </a>
 
-    <a href="" class="side-bar-item">
+    <a href="{{route('product-slider')}}" class="side-bar-item">
         <i class="bi bi-currency-dollar"></i>
-        <span class="side-bar-item-caption">Create Sale</span>
+        <span class="side-bar-item-caption">Product Slider</span>
     </a>
 
     <a href="" class="side-bar-item">

@@ -125,4 +125,27 @@ class ProductController extends Controller
         $product = Product::where('id',$product_id)->where('user_id',$user_id)->first();
         return ResponseHelper::Out('Product Details', $product, 200);
     }
+
+
+
+    public function productByCategory()
+    {
+        $data = Category::all();
+
+        return ResponseHelper::Out('Category List', $data, 200);
+    }
+
+
+    public function productByRemark(Request $request)
+    {
+        $data = Product::where('remark',$request->remark)->with('category','brand')->get();
+        return ResponseHelper::Out('Product List', $data, 200);
+    }
+
+
+    public function ListProductByCategory(Request $request)
+    {
+        $data = Product::where('category_id',$request->id)->with('category','brand')->get();
+        return ResponseHelper::Out('Product List', $data, 200);
+    }
 }
