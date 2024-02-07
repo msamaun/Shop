@@ -83,9 +83,9 @@
         <span class="side-bar-item-caption">Brand</span>
     </a>
 
-    <a href="" class="side-bar-item">
+    <a href="{{route('category')}}" class="side-bar-item">
         <i class="fa-solid fa-people-group"></i>
-        <span class="side-bar-item-caption">Customer</span>
+        <span class="side-bar-item-caption">Category</span>
     </a>
 
     <a href="" class="side-bar-item">
