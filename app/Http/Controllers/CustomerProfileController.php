@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\ResponseHelper;
 use App\Models\CustomerProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -32,15 +31,23 @@ class CustomerProfileController extends Controller
 
       return CustomerProfile::updateOrCreate([
           'user_id' => $user_id,
+          'cus_name' => $cus_name,
+          'cus_add' => $cus_address,
+          'cus_city' => $cus_city,
+          'cus_state' => $cus_state,
+          'cus_country' => $cus_country,
+          'cus_postcode' => $cus_zip,
+          'cus_phone' => $cus_phone,
+          'cus_fax' => $cus_fax,
+
+          'ship_name' => $ship_name,
+          'ship_add' => $ship_address,
+          'ship_city' => $ship_city,
+          'ship_state' => $ship_state,
+          'ship_country' => $ship_country,
+          'ship_postcode' => $ship_zip,
+          'ship_phone' => $ship_phone
           ]);
 
   }
-
-  public function userProfileRead()
-  {
-      $user_id = Auth::id();
-      return CustomerProfile::where('user_id', $user_id)->first();
-
-  }
-
 }

@@ -52,6 +52,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 
+
+//Customer Views Routes
+Route::view('/user-profile','auth.pages.profile-page')->name('user-profile');
+
+//Customer Routes
+ Route::post('/user-profile',[CustomerProfileController::class,'userProfile'])->middleware('auth:sanctum');
+
 //Route Group for Admin
 
 Route::group(['middleware' => ['auth:sanctum','user']], function () {
